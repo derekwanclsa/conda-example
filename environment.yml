@@ -1,0 +1,7 @@
+name: conda-example
+
+requirements:
+  - python = 3.9
+  - pandas = 1.2
+  - jupyterlab = 3.0
+  - yfinance = 0.1.54
