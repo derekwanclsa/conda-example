@@ -24,6 +24,8 @@ Simplifying assumptions:
 - The period of time can be anytime to anytime.
 - The universe over the period of time can be assumed to be constant, with the same constituents as those in the S&P today.
 
+Feel free to make further simplifying assumptions - they are not forbidden. Just be prepared to explain why you did it.
+
 ## Setup
 
 Very little is fixed. You must use:
