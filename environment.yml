@@ -1,6 +1,9 @@
 name: conda-example
 
-requirements:
+channels:
+  - conda-forge
+
+dependencies:
   - python = 3.9
   - pandas = 1.2
   - jupyterlab = 3.0
