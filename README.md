@@ -1,54 +1,74 @@
 # Interview task
 
 ## Overview
-In this task, I would like you to conduct a small research project entirely from scratch. It will be representative of the work we will do. To mimic reality, it is both *open-ended* and *idealized* - you may well find unexpected difficulties along the way.
+In this task, I would like you to conduct a small research project entirely from scratch. The task is representative of the work we do, and therefore:
+
+- you will have a chance to demonstrate some of your relevant coding/mathematical skills.
+- it is largely open-ended; you will have the freedom to structure the project as you see fit. Much like on-the-job.
+- it is idealized; you may well find unexpected difficulties along the way, and your resourcefulness/outside-the-box-thinking will be needed. Again, much like on-the-job.
+- Lastly, you will have a chance to see if this role truly interests you! (Yes, it matters!)
+
+This is not a test of memorization. You are welcome to use Google, StackOverflow, whatever resources you may need. We do this on-the-job too.
 
 ## Task
-Please construct a simple
-[momentum](https://en.wikipedia.org/wiki/Momentum_(technical_analysis))
-signal on the
-[S&P100](https://en.wikipedia.org/wiki/S%26P_100).
-You may use any value of `N`.
-We will use:
+Construct a simple trading signal on the [S&P100](https://en.wikipedia.org/wiki/S%26P_100), and then run it through a backtest. Present its PnL and any relevant risk/reward metrics you wish.
 
-- [yfinance](https://github.com/ranaroussi/yfinance) to the fetch the data,
-- [pandas](https://github.com/pandas-dev/pandas) to organize and analyze it, and
-- [jupyter lab](https://github.com/jupyterlab/jupyterlab/) to present it.
-- any visualization library of your choice.
+*Note*: The signal does not need to carry any IP (intellectual property). You can even implement [momentum](https://en.wikipedia.org/wiki/Momentum_(technical_analysis)) as described by Wikipedia. In fact, do this, if you have no prior trading experience.
 
-Assemble the data for any 5-year period. For simplicity, you may assume that the universe over that period of time is constant with the same constituents as those in the S&P today.
+You will need to fetch the data to support this work yourself. [yfinance](https://github.com/ranaroussi/yfinance) is the go-to package (and has already been added to the environment by default). If you know something else, feel free to use it. If not, then you will be tested on how quickly you can pick up new tools of the trade.
 
-Let `0.0 < f < 0.5` and `r >= 1` be parameters. We will hold:
+You will need to conduct your analysis with [pandas](https://github.com/pandas-dev/pandas) and to present it with [jupyter](https://github.com/jupyterlab/jupyterlab/). Be sure to include some charts, using any visualization library of your choice.
 
-- $1 in each of the top `f` fraction of names (e.g. if `f = 0.1`, then we will long each of the top 10% of names), and
-- -$1 in each of the bottom `f` fraction of names.
-  
-We will rebalance every `r` days.
+Simplifying assumptions:
 
-Please plot the cumulative PnL according to a handful (say 2-3) combinations of `f` and `r`. Compute any additional portfolio statistics you wish to discuss.
-
-You are, of course, allowed to GitHub/StackOverflow/etc for any help you might need.
+- The period of time can be anytime to anytime.
+- The universe over the period of time can be assumed to be constant, with the same constituents as those in the S&P today.
 
 ## Setup
-You must use:
+
+Very little is fixed. You must use:
 
 - this current Windows machine.
 - [GitHub](https://github.com/) to host the code.
-  
-To set GitHub up:
 
-- Log into [GitHub](https://github.com/) as `derekwanclsa`.
-- Create a new private repo with your name:
-- Use `git bash` to clone the repo:
-  
-  ![...](doc/git-bash.png)
-
-Everyone as their own development environment. You are welcome to go and configure your own, but only the end result will be considered. As time is limited, this may well be infeasible. Hence, the following are also provided:
+Other than these, everything else is welcome; we each have our own development environment after all. Given time is limited, this may well be infeasible. Hence, the following are also provided:
 
 - [conda](https://docs.conda.io/en/latest/), a Python environment manager.
 - [PyCharm](https://www.jetbrains.com/pycharm/), a Python IDE.
 
-You are not expected to be familiar with them, so you will be walked through their configuration. First, we set up `conda`:
+### GitHub
+
+Let us set up everything up now.
+
+- Log into [GitHub](https://github.com/) as `derekwanclsa`.
+  
+  ![...](doc/github-login.png)
+  
+- Create a new repo:
+  
+  ![...](doc/new-repository.png)
+  
+- Make sure to use the `interview-task` template, and to name it after yourself:
+  
+  ![...](doc/new-repository2.png)
+
+- Also make sure the repo is private:
+  
+  ![...](doc/new-repository3.png)
+
+- Note that repo URL is under "Code" > "HTTPS":
+  
+  ![...](doc/new-repository4.png)
+  
+- Use `git bash` to clone the repo:
+  
+  ![...](doc/git-bash.png)
+
+  Clone anywhere you want, for example, under `~/Documents/derekwan`:
+  
+  ![...](doc/clone-repository.png)
+
+### conda
 
 - Start `anaconda powershell prompt`:
   
@@ -61,35 +81,64 @@ You are not expected to be familiar with them, so you will be walked through the
   After a minute or two:
   
   ![...](doc/installing-conda2.png)
-  
-- If you wish to add packages:
-  - Add them to `environment.yml`:
-    
-    ![...](doc/adding-to-environment.png)
-    
-  - Then run `conda activate  `conda env update`:
-    
-    ![...](doc/adding-to-environment2.png)
-    
-Next, we set up PyCharm:
 
-- Go to the "Settings":
+- Activate the environment with `conda activate interview-task`:
+
+  ![...](doc/installing-conda3.png)
+
+  You should see the prompt change to the `interview-task` environment.
+  
+If you wish to add packages:
+
+- Add them to `environment.yml`:
+    
+  ![...](doc/adding-to-environment.png)
+    
+- Then run `conda env update`:
+    
+  ![...](doc/adding-to-environment2.png)
+    
+  After a minute or two:
+    
+  ![...](doc/adding-to-environment3.png)
+    
+### PyCharm
+
+- Start `PyCharm Community Edition`:
+
+  ![...](doc/start-pycharm0.png)
+
+- Go to "Open":
+
+  ![...](doc/start-pycharm1.png)
+
+- Navigate to your repo:
+  
+  ![...](doc/start-pycharm2.png)
+  
+  You should see all existing files:
+  
+  ![...](doc/start-pycharm3.png)
+
+Next, we set up the interpreter.
+
+- Go to "File" > "Settings":
   
   ![...](doc/pycharm-interpreter.png)
   
-- Go to "Project Interpreter" and show all:
+- Go to "Project: yourname" > "Project Interpreter" and hit the gears:
   
   ![...](doc/pycharm-interpreter2.png)
-
-- Go to add:
   
-  ![...](doc/pycharm-interpreter3.png)
+- Go to "Add":
+  
+  ![...](doc/pycharm-interpreter2b.png)
 
 - Go to "Conda Environment" > "Existing environment" and then expand the list of interpreters:
   
   ![...](doc/pycharm-interpreter4.png)
 
-- Select `python3.exe` under the `miniconda3` folder:
+- Select `python3.exe` under the `miniconda3\envs` folder:
   
   ![...](doc/pycharm-interpreter5.png)
 
@@ -97,11 +146,13 @@ Next, we set up PyCharm:
   
   ![...](doc/pycharm-interpreter6.png)
 
-- PyCharm should now be linked to the environment, providing auto-completions et al:
+- PyCharm should now be linked to the environment, providing auto-completions and everything else:
   
   ![...](doc/pycharm-auto-completion.png)
 
-### PyCharm
+### Jupyter
 
+This can be launched from the Anaconda prompt. Make sure you have your environment activated.
 
+![...](doc/jupyter.png)
 
